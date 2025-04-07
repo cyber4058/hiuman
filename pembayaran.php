@@ -1,6 +1,6 @@
 require 'vendor/autoload.php';
 
-\Stripe\Stripe::setApiKey('your-secret-key-here');
+\Stripe\Stripe::setApiKey('pk_test_51RBBrdKvKswXg6Dp0H93UhwAcZ1CQ1zmRsd2puagBK75r3XiEC1STVa0Qms9AicBpVmMfp2CivkJPaH0Awn3iZMR00BVN0ka6A');
 
 $token = $_POST['stripeToken'];
 
