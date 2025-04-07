@@ -1,0 +1,39 @@
+<form action="charge.php" method="POST" id="payment-form">
+  <label for="card-element">
+    Credit or debit card
+  </label>
+  <div id="card-element">
+    <!-- A Stripe Element will be inserted here. -->
+  </div>
+  <button type="submit">Submit Payment</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  var stripe = Stripe('your-public-key-here');
+  var elements = stripe.elements();
+  var card = elements.create('card');
+  card.mount('#card-element');
+  
+  var form = document.getElementById('payment-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        // Handle error
+      } else {
+        // Send token to server
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'charge.php';
+        var tokenInput = document.createElement('input');
+        tokenInput.type = 'hidden';
+        tokenInput.name = 'stripeToken';
+        tokenInput.value = result.token.id;
+        form.appendChild(tokenInput);
+        document.body.appendChild(form);
+        form.submit();
+      }
+    });
+  });
+</script>
