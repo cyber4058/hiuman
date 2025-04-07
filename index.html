@@ -10,7 +10,7 @@
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-  var stripe = Stripe('your-public-key-here');
+  var stripe = Stripe('pk_test_51RBBrdKvKswXg6Dp0H93UhwAcZ1CQ1zmRsd2puagBK75r3XiEC1STVa0Qms9AicBpVmMfp2CivkJPaH0Awn3iZMR00BVN0ka6A');
   var elements = stripe.elements();
   var card = elements.create('card');
   card.mount('#card-element');
